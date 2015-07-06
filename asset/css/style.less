@@ -1,0 +1,357 @@
+@import "../less/prefixer.less";
+
+/* Flat Colors */
+@green:#2ecc71;
+@greenHover:#27ae60;
+@darkGreen: #1abc9c;
+@darkGreenHover:#16a085;
+@blue:#3498db;
+@blueNav:#4183D7;
+@blueHover:#2980b9;
+@darkBlue:#34495e;
+@darkBlueHover:#2c3e50;
+@red:#e74c3c;
+@redHover:#c0392b;
+@lightGray:#F2F3F5;
+@gray:#cccccc;
+@darkGray:#7c7c7c;
+@white:#FFF;
+@bodyColor:#F2F3F5;
+@birdyColor: #15B7AB;
+@birdyColorHover: #139A91;
+
+@boxS:0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+
+
+.openFont(@fw)
+{
+    font-family: Open sans;
+    font-weight: @fw;
+}
+
+.robotoFont(@fw)
+{
+    font-family: Roboto;
+    font-weight: @fw;
+}
+
+.round(@h, @w, @color, @bdrW, @rad)
+{
+    display: block;
+    height: @h;
+    width: @w;
+    line-height: @h;
+    border-radius: @rad;
+    border: @bdrW solid @color;
+}
+
+.rect(@h, @w, @color, @bdrW, @bdr)
+{
+    display: block;
+    height: @h;
+    width: @w;
+    background-color: @color;
+    line-height: @h;
+    border-bottom: @bdrW solid @bdr;
+}
+
+body
+{
+    .reset;
+    top:0;
+    left: 0; right: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+h2
+{
+    color: darken(@blue, 5%);
+    .openFont(200);
+    margin-top: 30px;
+    font-size: 33px;
+    width: 355px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.wait
+{
+    .transition-duration(2s);
+}
+
+#blur
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url('../img/BgBlurred.png');
+    .reset;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: none;
+}
+
+#search
+{
+    width: 250px;
+    height: 100%;
+    position: absolute;
+    background-color: @blueHover;
+    padding: 30px;
+    padding-right: 60px;
+    margin-top: -95px;
+    margin-right: 150px;
+    margin-left: -340px;
+
+    h3
+    {
+        color: @white;
+        .openFont(200);
+        margin-top: 30px;
+        font-size: 25px;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    form input
+    {
+        height: 38px;
+        width: 250px;
+        padding-left: 26px;
+        .openFont(200);
+        font-size: 15px;
+        border-style: none;
+        margin-bottom: 20px;
+        border-radius: 5px;
+
+        &:focus
+        {
+            outline: 0;
+        }
+    }
+
+    .mapIcon
+    {
+        position: absolute;
+        font-size: 21px;
+        margin-top: 6px;
+        margin-left: 8px;
+        color: darken(@gray, 8%);
+    }
+
+    span
+    {
+        display: block;
+        .openFont(400);
+        font-size: 22px;
+        color: @white;
+        margin-top: 40px;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .locate
+    {
+        display: inline-block;
+        .openFont(400);
+        font-size: 22px;
+        background-color: @white;
+        color: @blue;
+        margin-left: 215px;
+        position: absolute;
+        margin-top: -56px;
+        cursor: pointer;
+        width: 61px;
+
+        &:before
+        {
+            content: "|";
+            color: @blue;
+            padding-right: 5px;
+            cursor: default;
+        }
+    }
+
+    .btn
+    {
+        display: block;
+        background-color: transparent;
+        .round(60px, 60px, @white, 2px, 50%);
+        .openFont(400);
+        font-size: 18px;
+        color: @white;
+        margin-left: 95px;
+        margin-top: 20px;
+        cursor: pointer;
+        .transition-duration(0.5s);
+        text-align: center;
+        text-decoration: none;
+
+        &:hover
+        {
+            background-color: @white;
+            color: @blueHover;
+            .transition-duration(0.5s);
+        }
+    }
+
+    #searchBtn, #localize
+    {
+        display: block;
+        background-color: transparent;
+        .round(60px, 60px, @white, 2px, 50%);
+        .openFont(400);
+        font-size: 18px;
+        color: @white;
+        margin-top: 20px;
+        cursor: pointer;
+        .transition-duration(0.5s);
+        text-align: center;
+        text-decoration: none;
+        float: left;
+        margin-left: 58px;
+        margin-bottom: 65px;
+
+        &:hover
+        {
+            background-color: @white;
+            color: @blueHover;
+            .transition-duration(0.5s);
+        }
+    }
+
+    #localize
+    {
+        margin-left: 25px;
+    }
+}
+
+.animate
+{
+    .transition-duration(0.5s);
+    .translate(390px, 0);
+}
+
+.animateSide
+{
+    .transition-duration(0.5s);
+    .translate(340px, 0);
+}
+
+.animateBack
+{
+    .transition-duration(0.5s);
+    .translate(0, 0);
+}
+
+.animateSideBack
+{
+    .transition-duration(0.5s);
+    .translate(0, 0);
+}
+
+#map
+{
+    width: 800px;
+    height: 600px;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 8px;
+
+    &:-webkit-full-screen
+    {
+        width: 100%;
+        height: 100%;
+    }
+
+    &:-moz-full-screen
+    {
+        width: 100%;
+        height: 100%;
+    }
+
+    &:full-screen
+    {
+        width: 100%;
+        height: 100%;
+    }
+
+    &:-ms-full-screen
+    {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+#bars
+{
+    color: darken(@blue, 7%);
+    font-size: 35px;
+    margin-left: 60px;
+    cursor: pointer;
+    position: absolute;
+    margin-top: -100px;
+}
+
+#fullScreen
+{
+    width: 200px;
+    float: right;
+    position: relative;
+    z-index: 2;
+
+    #new
+    {
+        .transition(1s);
+        bottom: 0;
+        position: fixed;
+        height: 75px;
+        width: 75px;
+        background-color: darken(@blue, 7%);
+        box-shadow: @boxS;
+        border-radius: 50%;
+        bottom: 0;
+        margin-left: 70px;
+        text-decoration: none;
+        margin-bottom: 55px;
+
+        &:hover
+        {
+            background-color: darken(@blueHover, 10%);
+            .transition(1s);
+        }
+
+        span
+        {
+            display: block;
+            line-height: 75px;
+            .robotoFont(400);
+            color: @white;
+            text-align: center;
+            font-size: 27px;
+        }
+    }
+}
+
+@media only screen and (max-device-width: 614px)
+and (min-device-width: 305px)
+{
+
+    #map
+    {
+        width: 100%;
+        height: 100%;
+        float: left;
+        margin-top: 165px;
+        position: absolute;
+    }
+
+    #search
+    {
+        width: 100%;
+        height: 200px;
+    }
+}
